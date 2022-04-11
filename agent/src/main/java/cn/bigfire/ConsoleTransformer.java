@@ -17,7 +17,8 @@ public class ConsoleTransformer implements ClassFileTransformer {
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
         if (className.equals("cn/bigfire/Console")){
             String root = StrUtil.subBefore(System.getProperty("user.dir"), "JavaAgentDemo", true);
-            String classFile = root + "JavaAgentDemo/agent/src/main/resources/Console.class";
+            System.out.println("-----------------:"+ root);
+            String classFile = root + "/agent/src/main/resources/Console.class";
             return FileUtil.readBytes(classFile);
         }
         return classfileBuffer;
